@@ -15,13 +15,42 @@
 > 2. npm install
 > 3. npm start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 기능 구현 설명
 
-### `npm test`
+```jsx
+///service/search.js
+import { API_STRING, ERROR_MESSAGE } from "../constants/config";
+import { getCache, setCache } from "../utils/casheStorage";
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+import apiClient from "./apiClient";
+
+
+export const searchAPI = async (q) => {
+  const config = {
+    params: {
+      q,
+    },
+  };
+
+  const requestUrl = new URLSearchParams(config.params).toString();
+  const cachedData = await getCache(requestUrl);
+
+
+  if (config.params.q === "") return [];
+
+  // 캐싱된 데이터가 있으면 데이터 json화
+  if (cachedData) return cachedData.json();
+
+  try {
+    const { data } = await apiClient.get(API_STRING, config);
+    console.info("calling api");
+    setCache(requestUrl, data);
+    return data;
+  } catch (err) {
+    alert(ERROR_MESSAGE);
+  }
+};
+```
 
 ### `npm run build`
 
