@@ -178,4 +178,5 @@ export default function useDebounce(value, delay = 300) {
 > 중복되는 인덱스 값을 방지하기 위해 prev와 nextIndex 값을 비교하여 같은 경우에는 이전 값을 반환하고, 다른 경우에는 다음 값을 반환합니다.
 
 </br>
-![화면 기록 2023-07-19 오후 9 47 26](https://github.com/iym1511/clinical-trial/assets/102650332/fe451165-1586-4e2f-abee-a43df15fe493)
+
+<img src="![화면 기록 2023-07-19 오후 9 47 26](https://github.com/iym1511/clinical-trial/assets/102650332/fe451165-1586-4e2f-abee-a43df15fe493)">
