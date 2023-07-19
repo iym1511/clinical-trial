@@ -72,8 +72,16 @@ export const getCache = async (url) => {
   return cachedData;
 };
 ```
+#### setCache
+> setCache에서 인자로 받아온 값들을 저장할 'cacheStorage'라는 캐시 스토리지를 엽니다.
+> new Response(JSON.stringify(data))를 사용하여 데이터를 JSON 형식으로 변환한 후, 
+> Response 객체로 감싸서 responseData를 생성합니다.
+> cache.put(url, responseData)를 호출하여 주어진 URL과 responseData를 캐시에 저장합니다.
 
-api호출 후 getCache르
+#### getCache
+> 먼저 caches.open("cacheStorage")를 사용하여 cacheStorage라는 캐시 스토리지를 엽니다.
+> cache.match(url)을 호출하여 주어진 URL과 일치하는 캐시 데이터를 찾습니다.
+> 찾은 캐시 데이터를 반환합니다.
 
 ### `npm run build`
 
