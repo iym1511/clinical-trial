@@ -20,7 +20,6 @@ const AutocompleteBox = (props) => {
 
   const handleKeyEvent = (e) => {
     const autoLength = autocompleteArray?.length;
-    console.log(autocompleteArray);
     if (!isFocused) return;
     if (e.isComposing) return;
     if (e.key === "ArrowDown") {
@@ -68,8 +67,8 @@ const AutocompleteBox = (props) => {
         : getSession()
         ? getSession()
             .slice(0, 5)
-            .map((deta) => (
-              <RecentWordList>
+            .map((deta, i) => (
+              <RecentWordList key={i}>
                 <svg
                   viewBox="0 0 16 16"
                   preserveAspectRatio="none"

@@ -14,6 +14,5 @@ export const setSession = (keyWord) => {
 
 export const getSession = () => {
   const recentBox = sessionStorage.getItem("recentlyKeywords");
-  console.log(JSON.parse(recentBox));
   return JSON.parse(recentBox);
 };

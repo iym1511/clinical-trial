@@ -1,15 +1,19 @@
-# Getting Started with Create React App
+# 추천 검색창 구현
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+참고사이트 [한국임상정보](https://clinicaltrialskorea.com/).
 
-## Available Scripts
+## 구현 목표
 
-In the project directory, you can run:
+ - 질환명 검색시 API호출을 통해 검색어 추천기능 구현
+ - API 호출 로컬 캐싱 구현
+ - 입력시 마다 API호출이 되지않도록 API호출 수를 줄일수있게 로컬 캐싱
+ - 키보드 keyDown,up을 이용해 추천검색어 목록 컨트롤 구현
 
-### `npm start`
+### 실행방법
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> 1. [서버](https://github.com/walking-sunset/assignment-api) 실행
+> 2. npm install
+> 3. npm start
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
