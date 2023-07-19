@@ -21,6 +21,11 @@
 
 </br>
 
+## 의존성
+- API : ![Axios](https://img.shields.io/badge/Axios-yellow)
+- Style : ![Emotion](https://img.shields.io/badge/Emotion-green)
+- Language: ![React](https://img.shields.io/badge/React-61DAFB?logo=React&logoColor=white)
+
 ## 기능 구현 설명
 
 ```jsx
