@@ -179,4 +179,4 @@ export default function useDebounce(value, delay = 300) {
 
 </br>
 
-<img src="![화면 기록 2023-07-19 오후 9 47 26](https://github.com/iym1511/clinical-trial/assets/102650332/fe451165-1586-4e2f-abee-a43df15fe493)">
+<img src="https://github.com/iym1511/clinical-trial/assets/102650332/fe451165-1586-4e2f-abee-a43df15fe493">
