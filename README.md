@@ -52,10 +52,11 @@ export const searchAPI = async (q) => {
   }
 };
 ```
-> params로 받아온 인자값이 없으면 빈배열을 반환해주고
-> cachedData(캐싱데이터) 가 있으면 캐싱되어있는 데이터를 반환한다.
-> 둘중 어떠한것도 속하지 않는다면 api에서 호출한 데이터를 반환하고,
-> setCache에 검색된 데이터를 저장한다.
+> params로 받아온 인자값이 없으면 빈배열을 반환해주고 <br/>
+> cachedData(캐싱데이터) 가 있으면 캐싱되어있는 데이터를 반환한다. <br/>
+> 둘중 어떠한것도 속하지 않는다면 api에서 호출한 데이터를 반환하고, <br/>
+> setCache에 검색된 데이터를 저장한다. <br/>
+
 
 ```jsx
 ///utils/casheStorage.js
