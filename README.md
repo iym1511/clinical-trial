@@ -9,7 +9,7 @@
  - 입력시 마다 API호출이 되지않도록 API호출 수를 줄일수있게 로컬 캐싱
  - 키보드 keyDown,up을 이용해 추천검색어 목록 컨트롤 구현
 
-### 실행방법
+## 실행방법
 
 > 1. [서버](https://github.com/walking-sunset/assignment-api) 실행
 > 2. npm install
