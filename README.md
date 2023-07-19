@@ -58,7 +58,6 @@ export const searchAPI = async (q) => {
   }
 };
 ```
-</br>
 
 > params로 받아온 인자값이 없으면 빈배열을 반환해주고 <br/>
 > cachedData(캐싱데이터) 가 있으면 캐싱되어있는 데이터를 반환한다. <br/>
@@ -82,7 +81,6 @@ export const getCache = async (url) => {
 };
 ```
 
-</br>
 #### setCache
 > setCache에서 인자로 받아온 값들을 저장할 'cacheStorage'라는 캐시 스토리지를 엽니다. <br/>
 > new Response(JSON.stringify(data))를 사용하여 데이터를 JSON 형식으로 변환한 후, <br/>
