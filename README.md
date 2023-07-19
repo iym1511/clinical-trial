@@ -181,4 +181,4 @@ export default function useDebounce(value, delay = 300) {
 
 ## 실행영상
 
-<img src="https://github.com/iym1511/clinical-trial/assets/102650332/7e91209e-f9d0-479b-a16b-f68110d88eaa">
+<img {: width="300px", height="200px"} src="https://github.com/iym1511/clinical-trial/assets/102650332/7e91209e-f9d0-479b-a16b-f68110d88eaa">
