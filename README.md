@@ -124,3 +124,50 @@ export default function useDebounce(value, delay = 300) {
 > value와 delay를 인자로 받습니다. value는 입력된 값이고 delay는 지연 시간입니다. 기본값으로 300ms으로 설정합니다. </br>
 > setTimeout 함수를 사용하여 주어진 지연 시간(delay) 이후에 setDebouncedValue를 호출하여 debouncedValue를 업데이트합니다. </br>
 > 반환되는 함수는 이전에 설정된 타이머를 취소하기위해 'clearTimeout' 함수를 사용해서 이전타이머를 초기화 시켜줍니다. 값이 변경될때마다 이전타이머를 취소하고 다시 타이머를 작동시킵니다. </br>
+
+</br>
+
+## KeyboardEvent.key 로 추천검색어 이동
+```jsx
+  ///components/AutoComplenteBox.jsx
+
+    useEffect(() => {
+      window.addEventListener("keydown", handleKeyEvent);
+      return () => {
+        window.removeEventListener("keydown", handleKeyEvent);
+      };
+    });
+
+    const handleKeyEvent = (e) => {
+      // api 에서 받아온 검색결과 길이
+    const autoLength = autocompleteArray?.length;
+    if (!isFocused) return;
+    if (e.isComposing) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((prev) => {
+        const nextIndex = Math.min(prev + 1, autoLength - 1);
+        // index값을 비교하여 중복되면 현재값 아니면 다음값 반환
+        return prev === nextIndex ? prev : nextIndex;
+      });
+    }
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((prev) => {
+        const nextIndex = Math.max(prev - 1, 0);
+        return prev === nextIndex ? prev : nextIndex;
+      });
+    }
+    if (e.key === "Enter") {
+      autocompleteArray?.forEach((a, i) => {
+        if (i === selectedIndex) {
+          return setSession(a.sickNm);
+        }
+      });
+    }
+  };
+```
+#### e.key값이 ArrowDown이거나 ArrowUp일때.
+> e.preventDefault()를 호출하여 기본 동작을 막습니다. 예를 들어, 화살표 키를 눌렀을 때 페이지 스크롤 등의 기본 동작을 방지합니다. </br>
+> setSelectedIndex를 사용하여 이전 selectedIndex 값을 기반으로 새로운 인덱스 값을 설정합니다. </br>
+> 중복되는 인덱스 값을 방지하기 위해 prev와 nextIndex 값을 비교하여 같은 경우에는 이전 값을 반환하고, 다른 경우에는 다음 값을 반환합니다.
