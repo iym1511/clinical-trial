@@ -120,7 +120,7 @@ export default function useDebounce(value, delay = 300) {
   return debouncedValue;
 }
 ```
-</br>
+
 > value와 delay를 인자로 받습니다. value는 입력된 값이고 delay는 지연 시간입니다. 기본값으로 300ms으로 설정합니다. </br>
 > setTimeout 함수를 사용하여 주어진 지연 시간(delay) 이후에 setDebouncedValue를 호출하여 debouncedValue를 업데이트합니다. </br>
 > 반환되는 함수는 이전에 설정된 타이머를 취소하기위해 'clearTimeout' 함수를 사용해서 이전타이머를 초기화 시켜줍니다. 값이 변경될때마다 이전타이머를 취소하고 다시 타이머를 작동시킵니다. </br>
