@@ -35,7 +35,7 @@ export const searchAPI = async (q) => {
   const requestUrl = new URLSearchParams(config.params).toString();
   const cachedData = await getCache(requestUrl);
 
-
+  // 검색을위해 받아온 인자값이 없으면 빈배열 반환
   if (config.params.q === "") return [];
 
   // 캐싱된 데이터가 있으면 데이터 json화
@@ -44,6 +44,7 @@ export const searchAPI = async (q) => {
   try {
     const { data } = await apiClient.get(API_STRING, config);
     console.info("calling api");
+    // API 호출에 사용된 검색어를 식별후 캐시 저장
     setCache(requestUrl, data);
     return data;
   } catch (err) {
@@ -51,6 +52,27 @@ export const searchAPI = async (q) => {
   }
 };
 ```
+> params로 받아온 인자값이 없으면 빈배열을 반환해주고
+> cachedData(캐싱데이터) 가 있으면 캐싱되어있는 데이터를 반환한다.
+> 둘중 어떠한것도 속하지 않는다면 api에서 호출한 데이터를 반환하고,
+> setCache에 검색된 데이터를 저장한다.
+
+```jsx
+///utils/casheStorage.js
+export const setCache = async (url, data) => {
+  const cache = await caches.open("cacheStorage");
+  const responseData = new Response(JSON.stringify(data));
+  cache.put(url, responseData);
+};
+
+export const getCache = async (url) => {
+  const cache = await caches.open("cacheStorage");
+  const cachedData = await cache.match(url);
+  return cachedData;
+};
+```
+
+api호출 후 getCache르
 
 ### `npm run build`
 

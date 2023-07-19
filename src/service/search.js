@@ -13,7 +13,7 @@ export const searchAPI = async (q) => {
 
   const requestUrl = new URLSearchParams(config.params).toString();
   const cachedData = await getCache(requestUrl);
-
+  
   if (config.params.q === "") return [];
 
   if (cachedData) return cachedData.json();
