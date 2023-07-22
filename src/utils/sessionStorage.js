@@ -17,6 +17,7 @@ export const getSession = () => {
   return JSON.parse(recentBox); 
 };
 
+
 // JSON.stringfy
 // javascript 객체나 배열을 JSON형태로 변환
 
