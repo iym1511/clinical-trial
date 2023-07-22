@@ -14,5 +14,11 @@ export const setSession = (keyWord) => {
 
 export const getSession = () => {
   const recentBox = sessionStorage.getItem("recentlyKeywords");
-  return JSON.parse(recentBox);
+  return JSON.parse(recentBox); 
 };
+
+// JSON.stringfy
+// javascript 객체나 배열을 JSON형태로 변환
+
+// JSON.parse
+// JSON 문자열을 javascript객체나 배열로 변환
