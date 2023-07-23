@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useEffect } from "react";
 import { getSession, setSession } from "../utils/sessionStorage";
+import useHandlekey from "../Hooks/useHandlekey";
 
 const AutocompleteBox = (props) => {
   const {
@@ -8,43 +9,8 @@ const AutocompleteBox = (props) => {
     autocompleteArray,
     isFocused,
     selectedIndex,
-    setSelectedIndex,
   } = props;
 
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyEvent);
-    return () => {
-      window.removeEventListener("keydown", handleKeyEvent);
-    };
-  });
-
-  const handleKeyEvent = (e) => {
-    const autoLength = autocompleteArray?.length;
-    if (!isFocused) return;
-    if (e.isComposing) return;
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setSelectedIndex((prev) => {
-        const nextIndex = Math.min(prev + 1, autoLength - 1);
-        // index값을 비교하여 중복되면 현재값 아니면 다음값 반환
-        return prev === nextIndex ? prev : nextIndex;
-      });
-    }
-    if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setSelectedIndex((prev) => {
-        const nextIndex = Math.max(prev - 1, 0);
-        return prev === nextIndex ? prev : nextIndex;
-      });
-    }
-    if (e.key === "Enter") {
-      autocompleteArray?.forEach((a, i) => {
-        if (i === selectedIndex) {
-          return setSession(a.sickNm);
-        }
-      });
-    }
-  };
 
   return (
     <AutoCompleteContainer isFocused={isFocused}>

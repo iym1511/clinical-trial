@@ -6,13 +6,23 @@ import { setSession } from "../utils/sessionStorage";
 import useDebounce from "../Hooks/useDebounce";
 import { searchAPI } from "../service/search";
 import AutocompleteBox from "./AutoComplenteBox";
+import useHandlekey from "../Hooks/useHandlekey";
 
 const SearchBar = () => {
-  const [word, setWord] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
-  const [autocompleteArray, setAutocompleteArray] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  
+  const {
+    setAutocompleteArray,
+    setIsFocused,
+    setSelectedIndex,
+    setWord,
+    selectedIndex,
+    isFocused,
+    autocompleteArray,
+    word,
+  } = useHandlekey();
+
   const debouncedText = useDebounce(word);
+
 
   useEffect(() => {
     (async () => {
@@ -28,12 +38,8 @@ const SearchBar = () => {
     setWord(e.target.value);
   };
 
-  const openAutoBox = () => {
-    setIsFocused(true);
-  };
-
-  const closeAutoBox = () => {
-    setIsFocused(false);
+  const AutoBox = () => {
+    setIsFocused((prev) => !prev);
   };
 
   const searchWord = () => {
@@ -41,19 +47,37 @@ const SearchBar = () => {
   };
 
   const resetInput = () => {
-    setWord("")
-  }
+    setWord("");
+  };
 
   return (
     <div>
-      <SearchBarContainer onFocus={openAutoBox} onBlur={closeAutoBox} isFocused={isFocused}>
-          <SearchInput type="text" onChange={changeWord} value={word} placeholder="질환명을 입력해 주세요."/>
-          <SearchBarCancleBtn isFocused={isFocused} onClick={resetInput}>X</SearchBarCancleBtn>
-        <SearchInputBox>
-        </SearchInputBox>
+      <SearchBarContainer
+        onFocus={AutoBox}
+        onBlur={AutoBox}
+        isFocused={isFocused}
+      >
+        <SearchInput
+          type="text"
+          onChange={changeWord}
+          value={word}
+          placeholder="질환명을 입력해 주세요."
+        />
+        <SearchBarCancleBtn isFocused={isFocused} onClick={resetInput}>
+          X
+        </SearchBarCancleBtn>
+        <SearchInputBox></SearchInputBox>
         <SearchBarButton>
-          <svg onClick={searchWord} viewBox="0 0 16 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.56 0a6.56 6.56 0 015.255 10.49L16 14.674 14.675 16l-4.186-4.184A6.56 6.56 0 116.561 0zm0 1.875a4.686 4.686 0 100 9.372 4.686 4.686 0 000-9.372z" fill="#ffffff"></path>
+          <svg
+            onClick={searchWord}
+            viewBox="0 0 16 16"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.56 0a6.56 6.56 0 015.255 10.49L16 14.674 14.675 16l-4.186-4.184A6.56 6.56 0 116.561 0zm0 1.875a4.686 4.686 0 100 9.372 4.686 4.686 0 000-9.372z"
+              fill="#ffffff"
+            ></path>
           </svg>
         </SearchBarButton>
       </SearchBarContainer>
@@ -62,7 +86,6 @@ const SearchBar = () => {
         autocompleteArray={autocompleteArray}
         isFocused={isFocused}
         selectedIndex={selectedIndex}
-        setSelectedIndex={setSelectedIndex}
       />
     </div>
   );
@@ -72,7 +95,7 @@ const svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><pa
 
 const SearchInputBox = styled.div`
   font-size: 30x;
-`
+`;
 
 const SearchInput = styled.input`
   font-size: 17px;
@@ -94,7 +117,7 @@ const SearchInput = styled.input`
     background-position: 5px center;
     color: #bababa;
   }
-`
+`;
 
 const SearchBarContainer = styled.div`
   display: flex;
@@ -104,7 +127,8 @@ const SearchBarContainer = styled.div`
   height: 70px;
   border-radius: 42px;
   background-color: white;
-  border: ${(props) => (props.isFocused ? "2px solid #54a7ff" : "2px solid white")};
+  border: ${(props) =>
+    props.isFocused ? "2px solid #54a7ff" : "2px solid white"};
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   svg {
     cursor: pointer;
@@ -114,27 +138,27 @@ const SearchBarContainer = styled.div`
   }
 `;
 const SearchBarCancleBtn = styled.button`
-    border: none;
-    background-color:transparent;
-    cursor: ${(props) => (props.isFocused ? "pointer" : "none")};
-    color: white;
-    margin-right: 10px;
-    background-color: ${(props) => (props.isFocused ? "#c9c9c9" : "none")};
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-`
+  border: none;
+  background-color: transparent;
+  cursor: ${(props) => (props.isFocused ? "pointer" : "none")};
+  color: white;
+  margin-right: 10px;
+  background-color: ${(props) => (props.isFocused ? "#c9c9c9" : "none")};
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+`;
 
 const SearchBarButton = styled.button`
-    width: 20px;
-    height: 20px;
-    background-color: #007BE9 !important;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: #007be9 !important;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
 `;
 
 export default SearchBar;

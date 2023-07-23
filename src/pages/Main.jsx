@@ -10,6 +10,7 @@ const Main = () => {
         온라인으로 참여하기
       </MainTitle>
       <SearchBar />
+      <p>실행 전 서버를 실행시켜주세요.</p>
     </MainSection>
   );
 };
