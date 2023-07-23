@@ -15,13 +15,12 @@ const SearchBar = () => {
   const debouncedText = useDebounce(word);
 
   useEffect(() => {
-    const showApiData = async () => {
+    (async () => {
       const newAutocompleteArray = await searchAPI(
         debouncedText.trim().toLowerCase()
       );
       setAutocompleteArray(newAutocompleteArray.slice(0, 7));
-    };
-    showApiData();
+    })();
     setSelectedIndex(0);
   }, [debouncedText]);
 
