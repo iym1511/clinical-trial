@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import useDebounce from "./useDebounce";
 import { setSession } from "../utils/sessionStorage";
 
 export default function useHandlekey(value) {
   const [word, setWord] = useState("");
-  const [defaultValue, setDefaultValue] = useState();
   const [autocompleteArray, setAutocompleteArray] = useState();
   const [isFocused, setIsFocused] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -43,14 +41,12 @@ export default function useHandlekey(value) {
       });
     }
   };
-  
 
   return {
     isFocused,
     selectedIndex,
     autocompleteArray,
     word,
-    defaultValue,
     setAutocompleteArray,
     setIsFocused,
     setSelectedIndex,

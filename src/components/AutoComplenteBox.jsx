@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
-import { useEffect } from "react";
 import { getSession, setSession } from "../utils/sessionStorage";
-import useHandlekey from "../Hooks/useHandlekey";
 
 const AutocompleteBox = (props) => {
   const {

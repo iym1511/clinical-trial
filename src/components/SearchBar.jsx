@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useState } from "react";
 
 import styled from "@emotion/styled";
 import { setSession } from "../utils/sessionStorage";
@@ -9,7 +8,6 @@ import AutocompleteBox from "./AutoComplenteBox";
 import useHandlekey from "../Hooks/useHandlekey";
 
 const SearchBar = () => {
-  
   const {
     setAutocompleteArray,
     setIsFocused,
@@ -22,7 +20,6 @@ const SearchBar = () => {
   } = useHandlekey();
 
   const debouncedText = useDebounce(word);
-
 
   useEffect(() => {
     (async () => {
