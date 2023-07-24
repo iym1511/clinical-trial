@@ -24,7 +24,7 @@ const SearchBar = () => {
   useEffect(() => {
     (async () => {
       const newAutocompleteArray = await searchAPI(
-        debouncedText.trim().toLowerCase()
+        debouncedText?.trim().toLowerCase()
       );
       setAutocompleteArray(newAutocompleteArray.slice(0, 7));
     })();
