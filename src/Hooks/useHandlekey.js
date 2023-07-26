@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { setSession } from "../utils/sessionStorage";
 
-export default function useHandlekey(value) {
+export default function useHandlekey() {
   const [word, setWord] = useState("");
   const [autocompleteArray, setAutocompleteArray] = useState();
   const [isFocused, setIsFocused] = useState(false);

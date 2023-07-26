@@ -9,7 +9,6 @@ const AutocompleteBox = (props) => {
     selectedIndex,
   } = props;
 
-
   return (
     <AutoCompleteContainer isFocused={isFocused}>
       <ResentWordContainer>

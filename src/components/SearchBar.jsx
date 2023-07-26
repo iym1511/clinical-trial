@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import styled from "@emotion/styled";
 import { setSession } from "../utils/sessionStorage";
 import useDebounce from "../Hooks/useDebounce";
@@ -8,6 +7,7 @@ import AutocompleteBox from "./AutoComplenteBox";
 import useHandlekey from "../Hooks/useHandlekey";
 
 const SearchBar = () => {
+  
   const {
     setAutocompleteArray,
     setIsFocused,
@@ -22,10 +22,12 @@ const SearchBar = () => {
   const debouncedText = useDebounce(word);
 
   useEffect(() => {
+    // 즉시 실행 함수
     (async () => {
       const newAutocompleteArray = await searchAPI(
-        debouncedText?.trim().toLowerCase()
+        debouncedText.trim().toLowerCase()
       );
+      console.log(newAutocompleteArray)
       setAutocompleteArray(newAutocompleteArray.slice(0, 7));
     })();
     setSelectedIndex(0);
@@ -71,10 +73,10 @@ const SearchBar = () => {
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="M6.56 0a6.56 6.56 0 015.255 10.49L16 14.674 14.675 16l-4.186-4.184A6.56 6.56 0 116.561 0zm0 1.875a4.686 4.686 0 100 9.372 4.686 4.686 0 000-9.372z"
-              fill="#ffffff"
-            ></path>
+          <path
+            d="M6.56 0a6.56 6.56 0 015.255 10.49L16 14.674 14.675 16l-4.186-4.184A6.56 6.56 0 116.561 0zm0 1.875a4.686 4.686 0 100 9.372 4.686 4.686 0 000-9.372z"
+            fill="#ffffff"
+          ></path>
           </svg>
         </SearchBarButton>
       </SearchBarContainer>
