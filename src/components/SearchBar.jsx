@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { setSession } from "../utils/sessionStorage";
 import useDebounce from "../Hooks/useDebounce";
@@ -12,13 +12,12 @@ const SearchBar = () => {
     setAutocompleteArray,
     setIsFocused,
     setSelectedIndex,
-    setWord,
     selectedIndex,
     isFocused,
     autocompleteArray,
-    word,
   } = useHandlekey();
 
+  const [word, setWord] = useState("");
   const debouncedText = useDebounce(word);
 
   useEffect(() => {
@@ -136,6 +135,7 @@ const SearchBarContainer = styled.div`
     height: 20px;
   }
 `;
+
 const SearchBarCancleBtn = styled.button`
   border: none;
   background-color: transparent;

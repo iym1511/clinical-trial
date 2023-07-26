@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { setSession } from "../utils/sessionStorage";
 
 export default function useHandlekey() {
-  const [word, setWord] = useState("");
   const [autocompleteArray, setAutocompleteArray] = useState();
   const [isFocused, setIsFocused] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -46,10 +45,8 @@ export default function useHandlekey() {
     isFocused,
     selectedIndex,
     autocompleteArray,
-    word,
     setAutocompleteArray,
     setIsFocused,
     setSelectedIndex,
-    setWord,
   };
 }
