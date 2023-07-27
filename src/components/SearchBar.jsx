@@ -26,7 +26,6 @@ const SearchBar = () => {
       const newAutocompleteArray = await searchAPI(
         debouncedText.trim().toLowerCase()
       );
-      console.log(newAutocompleteArray)
       setAutocompleteArray(newAutocompleteArray.slice(0, 7));
     })();
     setSelectedIndex(0);
